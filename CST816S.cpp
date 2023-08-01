@@ -170,7 +170,8 @@ uint8_t CST816S::i2c_read(uint16_t addr, uint8_t reg_addr, uint8_t *reg_data, ui
   Wire.beginTransmission(addr);
   Wire.write(reg_addr);
   if ( Wire.endTransmission(true))return -1;
-  Wire.requestFrom(addr, length, true);
+  // Wire.requestFrom(addr, length, true);
+  Wire.requestFrom(addr, length);
   for (int i = 0; i < length; i++) {
     *reg_data++ = Wire.read();
   }
